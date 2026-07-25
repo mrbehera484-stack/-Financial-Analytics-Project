@@ -1,0 +1,244 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 9.2.0 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| 12pm               |
+| 1pm                |
+| amazon_sales_db    |
+| assignment         |
+| crb_data           |
+| crbdata            |
+| demodb             |
+| export             |
+| information_schema |
+| invest_money       |
+| mswil              |
+| mysql              |
+| performance_schema |
+| project            |
+| sakila             |
+| sys                |
+| youtube            |
++--------------------+
+17 rows in set (0.03 sec)
+
+mysql> use project;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_project |
++-------------------+
+| project_1         |
++-------------------+
+1 row in set (0.01 sec)
+
+mysql> CREATE TABLE Financial_Data (
+    ->     Transaction_ID VARCHAR(20) PRIMARY KEY,  -- TXN1001, TXN1002...
+    ->     Transaction_Date DATE NOT NULL,          -- YYYY-MM-DD format
+    ->     Revenue DECIMAL(12,2),                   -- 125000.50
+    ->     Expense DECIMAL(12,2),                   -- 85000.75
+    ->     Profit DECIMAL(12,2),                    -- Auto calculate bhi kar sakte
+    ->     Department VARCHAR(50),                  -- Sales, Support, HR, IT
+    ->     Category VARCHAR(50),                    -- Salary, Software, Marketing
+    ->     Region VARCHAR(50),                      -- North, South, Delhi, Mumbai
+    ->     Budget DECIMAL(12,2),                    -- 100000.00
+    ->     Actual_Spending DECIMAL(12,2)            -- 95000.00
+    -> );
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> INSERT INTO Financial_Data VALUES
+    -> ('TXN1001','2026-01-01',185000.00,95000.00,90000.00,'Sales','Product Sale','Delhi',100000.00,95000.00),
+    -> ('TXN1002','2026-01-02',92000.00,78000.00,14000.00,'Support','Salary','Mumbai',80000.00,78000.00),
+    -> ('TXN1003','2026-01-03',210000.00,125000.00,85000.00,'IT','Software License','Bangalore',130000.00,125000.00),
+    -> ('TXN1004','2026-01-04',68000.00,55000.00,13000.00,'HR','Recruitment','Chennai',60000.00,55000.00),
+    -> ('TXN1005','2026-01-05',195000.00,102000.00,93000.00,'Sales','Marketing','North',110000.00,102000.00),
+    -> ('TXN1006','2026-01-06',75000.00,62000.00,13000.00,'Operations','Rent','West',65000.00,62000.00),
+    -> ('TXN1007','2026-01-07',225000.00,140000.00,85000.00,'IT','Hardware','South',145000.00,140000.00),
+    -> ('TXN1008','2026-01-08',88000.00,71000.00,17000.00,'Support','Travel','East',75000.00,71000.00),
+    -> ('TXN1009','2026-01-09',165000.00,98000.00,67000.00,'Sales','Commission','Delhi',105000.00,98000.00),
+    -> ('TXN1010','2026-01-10',58000.00,52000.00,6000.00,'HR','Training','Noida',55000.00,52000.00),
+    -> ('TXN1011','2026-01-11',245000.00,155000.00,90000.00,'Operations','Logistics','Gurgaon',160000.00,155000.00),
+    -> ('TXN1012','2026-01-12',112000.00,85000.00,27000.00,'Support','Utilities','Pune',90000.00,85000.00),
+    -> ('TXN1013','2026-01-13',175000.00,99000.00,76000.00,'Sales','Product Sale','Hyderabad',105000.00,99000.00),
+    -> ('TXN1014','2026-01-14',95000.00,82000.00,13000.00,'IT','Internet','South',85000.00,82000.00),
+    -> ('TXN1015','2026-01-15',205000.00,118000.00,87000.00,'Sales','Marketing','West',125000.00,118000.00),
+    -> ('TXN1016','2026-01-16',72000.00,58000.00,14000.00,'HR','Salary','North',62000.00,58000.00),
+    -> ('TXN1017','2026-01-17',188000.00,108000.00,80000.00,'Operations','Equipment','East',115000.00,108000.00),
+    -> ('TXN1018','2026-01-18',102000.00,88000.00,14000.00,'Support','Salary','Mumbai',92000.00,88000.00),
+    -> ('TXN1019','2026-01-19',235000.00,148000.00,87000.00,'IT','Cloud Services','Bangalore',155000.00,148000.00),
+    -> ('TXN1020','2026-01-20',65000.00,59000.00,6000.00,'HR','Recruitment','Delhi',63000.00,59000.00),
+    -> ('TXN1021','2026-01-21',178000.00,96000.00,82000.00,'Sales','Product Sale','Kolkata',102000.00,96000.00),
+    -> ('TXN1022','2026-01-22',84000.00,73000.00,11000.00,'Operations','Maintenance','Chennai',78000.00,73000.00),
+    -> ('TXN1023','2026-01-23',198000.00,115000.00,83000.00,'IT','Software License','North',120000.00,115000.00),
+    -> ('TXN1024','2026-01-24',91000.00,79000.00,12000.00,'Support','Travel','West',83000.00,79000.00),
+    -> ('TXN1025','2026-01-25',255000.00,162000.00,93000.00,'Sales','Marketing','South',170000.00,162000.00),
+    -> ('TXN1026','2026-01-26',69000.00,61000.00,8000.00,'HR','Training','East',65000.00,61000.00),
+    -> ('TXN1027','2026-01-27',182000.00,104000.00,78000.00,'Operations','Rent','Delhi',110000.00,104000.00),
+    -> ('TXN1028','2026-01-28',105000.00,92000.00,13000.00,'IT','Hardware','Mumbai',98000.00,92000.00),
+    -> ('TXN1029','2026-01-29',215000.00,128000.00,87000.00,'Sales','Commission','Pune',135000.00,128000.00),
+    -> ('TXN1030','2026-01-30',78000.00,65000.00,13000.00,'Support','Utilities','Bangalore',70000.00,65000.00),
+    -> ('TXN1031','2026-01-31',192000.00,112000.00,80000.00,'IT','Cloud Services','Hyderabad',118000.00,112000.00),
+    -> ('TXN1032','2026-02-01',86000.00,74000.00,12000.00,'HR','Salary','North',79000.00,74000.00),
+    -> ('TXN1033','2026-02-02',228000.00,138000.00,90000.00,'Sales','Product Sale','West',145000.00,138000.00),
+    -> ('TXN1034','2026-02-03',93000.00,81000.00,12000.00,'Operations','Logistics','South',86000.00,81000.00),
+    -> ('TXN1035','2026-02-04',172000.00,101000.00,71000.00,'Support','Salary','East',108000.00,101000.00),
+    -> ('TXN1036','2026-02-05',208000.00,122000.00,86000.00,'IT','Software License','Delhi',128000.00,122000.00),
+    -> ('TXN1037','2026-02-06',62000.00,56000.00,6000.00,'HR','Recruitment','Gurgaon',60000.00,56000.00),
+    -> ('TXN1038','2026-02-07',189000.00,109000.00,80000.00,'Sales','Marketing','Noida',115000.00,109000.00),
+    -> ('TXN1039','2026-02-08',99000.00,86000.00,13000.00,'Operations','Equipment','Mumbai',91000.00,86000.00),
+    -> ('TXN1040','2026-02-09',242000.00,152000.00,90000.00,'IT','Hardware','Bangalore',160000.00,152000.00),
+    -> ('TXN1041','2026-02-10',71000.00,63000.00,8000.00,'Support','Travel','Chennai',68000.00,63000.00),
+    -> ('TXN1042','2026-02-11',176000.00,97000.00,79000.00,'Sales','Product Sale','South',103000.00,97000.00),
+    -> ('TXN1043','2026-02-12',108000.00,94000.00,14000.00,'HR','Training','West',99000.00,94000.00),
+    -> ('TXN1044','2026-02-13',218000.00,132000.00,86000.00,'Operations','Rent','East',140000.00,132000.00),
+    -> ('TXN1045','2026-02-14',82000.00,72000.00,10000.00,'IT','Internet','North',77000.00,72000.00),
+    -> ('TXN1046','2026-02-15',202000.00,119000.00,83000.00,'Sales','Commission','Delhi',125000.00,119000.00),
+    -> ('TXN1047','2026-02-16',96000.00,84000.00,12000.00,'Support','Utilities','Pune',89000.00,84000.00),
+    -> ('TXN1048','2026-02-17',185000.00,106000.00,79000.00,'IT','Cloud Services','Hyderabad',112000.00,106000.00),
+    -> ('TXN1049','2026-02-18',67000.00,60000.00,7000.00,'HR','Salary','Kolkata',64000.00,60000.00),
+    -> ('TXN1050','2026-02-19',232000.00,145000.00,87000.00,'Sales','Marketing','West',152000.00,145000.00);
+Query OK, 50 rows affected (0.03 sec)
+Records: 50  Duplicates: 0  Warnings: 0
+
+mysql> select * from Financial_Data;
++----------------+------------------+-----------+-----------+----------+------------+------------------+-----------+-----------+-----------------+
+| Transaction_ID | Transaction_Date | Revenue   | Expense   | Profit   | Department | Category         | Region    | Budget    | Actual_Spending |
++----------------+------------------+-----------+-----------+----------+------------+------------------+-----------+-----------+-----------------+
+| TXN1001        | 2026-01-01       | 185000.00 |  95000.00 | 90000.00 | Sales      | Product Sale     | Delhi     | 100000.00 |        95000.00 |
+| TXN1002        | 2026-01-02       |  92000.00 |  78000.00 | 14000.00 | Support    | Salary           | Mumbai    |  80000.00 |        78000.00 |
+| TXN1003        | 2026-01-03       | 210000.00 | 125000.00 | 85000.00 | IT         | Software License | Bangalore | 130000.00 |       125000.00 |
+| TXN1004        | 2026-01-04       |  68000.00 |  55000.00 | 13000.00 | HR         | Recruitment      | Chennai   |  60000.00 |        55000.00 |
+| TXN1005        | 2026-01-05       | 195000.00 | 102000.00 | 93000.00 | Sales      | Marketing        | North     | 110000.00 |       102000.00 |
+| TXN1006        | 2026-01-06       |  75000.00 |  62000.00 | 13000.00 | Operations | Rent             | West      |  65000.00 |        62000.00 |
+| TXN1007        | 2026-01-07       | 225000.00 | 140000.00 | 85000.00 | IT         | Hardware         | South     | 145000.00 |       140000.00 |
+| TXN1008        | 2026-01-08       |  88000.00 |  71000.00 | 17000.00 | Support    | Travel           | East      |  75000.00 |        71000.00 |
+| TXN1009        | 2026-01-09       | 165000.00 |  98000.00 | 67000.00 | Sales      | Commission       | Delhi     | 105000.00 |        98000.00 |
+| TXN1010        | 2026-01-10       |  58000.00 |  52000.00 |  6000.00 | HR         | Training         | Noida     |  55000.00 |        52000.00 |
+| TXN1011        | 2026-01-11       | 245000.00 | 155000.00 | 90000.00 | Operations | Logistics        | Gurgaon   | 160000.00 |       155000.00 |
+| TXN1012        | 2026-01-12       | 112000.00 |  85000.00 | 27000.00 | Support    | Utilities        | Pune      |  90000.00 |        85000.00 |
+| TXN1013        | 2026-01-13       | 175000.00 |  99000.00 | 76000.00 | Sales      | Product Sale     | Hyderabad | 105000.00 |        99000.00 |
+| TXN1014        | 2026-01-14       |  95000.00 |  82000.00 | 13000.00 | IT         | Internet         | South     |  85000.00 |        82000.00 |
+| TXN1015        | 2026-01-15       | 205000.00 | 118000.00 | 87000.00 | Sales      | Marketing        | West      | 125000.00 |       118000.00 |
+| TXN1016        | 2026-01-16       |  72000.00 |  58000.00 | 14000.00 | HR         | Salary           | North     |  62000.00 |        58000.00 |
+| TXN1017        | 2026-01-17       | 188000.00 | 108000.00 | 80000.00 | Operations | Equipment        | East      | 115000.00 |       108000.00 |
+| TXN1018        | 2026-01-18       | 102000.00 |  88000.00 | 14000.00 | Support    | Salary           | Mumbai    |  92000.00 |        88000.00 |
+| TXN1019        | 2026-01-19       | 235000.00 | 148000.00 | 87000.00 | IT         | Cloud Services   | Bangalore | 155000.00 |       148000.00 |
+| TXN1020        | 2026-01-20       |  65000.00 |  59000.00 |  6000.00 | HR         | Recruitment      | Delhi     |  63000.00 |        59000.00 |
+| TXN1021        | 2026-01-21       | 178000.00 |  96000.00 | 82000.00 | Sales      | Product Sale     | Kolkata   | 102000.00 |        96000.00 |
+| TXN1022        | 2026-01-22       |  84000.00 |  73000.00 | 11000.00 | Operations | Maintenance      | Chennai   |  78000.00 |        73000.00 |
+| TXN1023        | 2026-01-23       | 198000.00 | 115000.00 | 83000.00 | IT         | Software License | North     | 120000.00 |       115000.00 |
+| TXN1024        | 2026-01-24       |  91000.00 |  79000.00 | 12000.00 | Support    | Travel           | West      |  83000.00 |        79000.00 |
+| TXN1025        | 2026-01-25       | 255000.00 | 162000.00 | 93000.00 | Sales      | Marketing        | South     | 170000.00 |       162000.00 |
+| TXN1026        | 2026-01-26       |  69000.00 |  61000.00 |  8000.00 | HR         | Training         | East      |  65000.00 |        61000.00 |
+| TXN1027        | 2026-01-27       | 182000.00 | 104000.00 | 78000.00 | Operations | Rent             | Delhi     | 110000.00 |       104000.00 |
+| TXN1028        | 2026-01-28       | 105000.00 |  92000.00 | 13000.00 | IT         | Hardware         | Mumbai    |  98000.00 |        92000.00 |
+| TXN1029        | 2026-01-29       | 215000.00 | 128000.00 | 87000.00 | Sales      | Commission       | Pune      | 135000.00 |       128000.00 |
+| TXN1030        | 2026-01-30       |  78000.00 |  65000.00 | 13000.00 | Support    | Utilities        | Bangalore |  70000.00 |        65000.00 |
+| TXN1031        | 2026-01-31       | 192000.00 | 112000.00 | 80000.00 | IT         | Cloud Services   | Hyderabad | 118000.00 |       112000.00 |
+| TXN1032        | 2026-02-01       |  86000.00 |  74000.00 | 12000.00 | HR         | Salary           | North     |  79000.00 |        74000.00 |
+| TXN1033        | 2026-02-02       | 228000.00 | 138000.00 | 90000.00 | Sales      | Product Sale     | West      | 145000.00 |       138000.00 |
+| TXN1034        | 2026-02-03       |  93000.00 |  81000.00 | 12000.00 | Operations | Logistics        | South     |  86000.00 |        81000.00 |
+| TXN1035        | 2026-02-04       | 172000.00 | 101000.00 | 71000.00 | Support    | Salary           | East      | 108000.00 |       101000.00 |
+| TXN1036        | 2026-02-05       | 208000.00 | 122000.00 | 86000.00 | IT         | Software License | Delhi     | 128000.00 |       122000.00 |
+| TXN1037        | 2026-02-06       |  62000.00 |  56000.00 |  6000.00 | HR         | Recruitment      | Gurgaon   |  60000.00 |        56000.00 |
+| TXN1038        | 2026-02-07       | 189000.00 | 109000.00 | 80000.00 | Sales      | Marketing        | Noida     | 115000.00 |       109000.00 |
+| TXN1039        | 2026-02-08       |  99000.00 |  86000.00 | 13000.00 | Operations | Equipment        | Mumbai    |  91000.00 |        86000.00 |
+| TXN1040        | 2026-02-09       | 242000.00 | 152000.00 | 90000.00 | IT         | Hardware         | Bangalore | 160000.00 |       152000.00 |
+| TXN1041        | 2026-02-10       |  71000.00 |  63000.00 |  8000.00 | Support    | Travel           | Chennai   |  68000.00 |        63000.00 |
+| TXN1042        | 2026-02-11       | 176000.00 |  97000.00 | 79000.00 | Sales      | Product Sale     | South     | 103000.00 |        97000.00 |
+| TXN1043        | 2026-02-12       | 108000.00 |  94000.00 | 14000.00 | HR         | Training         | West      |  99000.00 |        94000.00 |
+| TXN1044        | 2026-02-13       | 218000.00 | 132000.00 | 86000.00 | Operations | Rent             | East      | 140000.00 |       132000.00 |
+| TXN1045        | 2026-02-14       |  82000.00 |  72000.00 | 10000.00 | IT         | Internet         | North     |  77000.00 |        72000.00 |
+| TXN1046        | 2026-02-15       | 202000.00 | 119000.00 | 83000.00 | Sales      | Commission       | Delhi     | 125000.00 |       119000.00 |
+| TXN1047        | 2026-02-16       |  96000.00 |  84000.00 | 12000.00 | Support    | Utilities        | Pune      |  89000.00 |        84000.00 |
+| TXN1048        | 2026-02-17       | 185000.00 | 106000.00 | 79000.00 | IT         | Cloud Services   | Hyderabad | 112000.00 |       106000.00 |
+| TXN1049        | 2026-02-18       |  67000.00 |  60000.00 |  7000.00 | HR         | Salary           | Kolkata   |  64000.00 |        60000.00 |
+| TXN1050        | 2026-02-19       | 232000.00 | 145000.00 | 87000.00 | Sales      | Marketing        | West      | 152000.00 |       145000.00 |
++----------------+------------------+-----------+-----------+----------+------------+------------------+-----------+-----------+-----------------+
+50 rows in set (0.00 sec)
+
+mysql> SELECT
+    ->     MONTH(Transaction_Date) AS Month_Number,
+    ->     MONTHNAME(Transaction_Date) AS Month_Name,
+    ->     SUM(Revenue) AS Total_Revenue
+    -> FROM Financial_Data
+    -> GROUP BY MONTH(Transaction_Date), MONTHNAME(Transaction_Date)
+    -> ORDER BY Month_Number;
++--------------+------------+---------------+
+| Month_Number | Month_Name | Total_Revenue |
++--------------+------------+---------------+
+|            1 | January    |    4502000.00 |
+|            2 | February   |    2816000.00 |
++--------------+------------+---------------+
+2 rows in set (0.01 sec)
+
+mysql> SELECT Department,
+    ->        SUM(Expense) AS Total_Expense
+    -> FROM Financial_Data
+    -> GROUP BY Department
+    -> ORDER BY Total_Expense DESC;
++------------+---------------+
+| Department | Total_Expense |
++------------+---------------+
+| Sales      |    1506000.00 |
+| IT         |    1266000.00 |
+| Operations |     801000.00 |
+| Support    |     714000.00 |
+| HR         |     569000.00 |
++------------+---------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT Region,
+    ->        SUM(Revenue - Expense) AS Profit
+    -> FROM Financial_Data
+    -> GROUP BY Region
+    -> ORDER BY Profit DESC;
++-----------+-----------+
+| Region    | Profit    |
++-----------+-----------+
+| Delhi     | 410000.00 |
+| West      | 303000.00 |
+| South     | 282000.00 |
+| Bangalore | 275000.00 |
+| East      | 262000.00 |
+| Hyderabad | 235000.00 |
+| North     | 212000.00 |
+| Pune      | 126000.00 |
+| Gurgaon   |  96000.00 |
+| Kolkata   |  89000.00 |
+| Noida     |  86000.00 |
+| Mumbai    |  54000.00 |
+| Chennai   |  32000.00 |
++-----------+-----------+
+13 rows in set (0.01 sec)
+
+mysql> SELECT Department,
+    ->        SUM(Budget) AS Total_Budget,
+    ->        SUM(Actual_Spending) AS Total_Actual_Spending
+    -> FROM Financial_Data
+    -> GROUP BY Department;
++------------+--------------+-----------------------+
+| Department | Total_Budget | Total_Actual_Spending |
++------------+--------------+-----------------------+
+| Sales      |   1592000.00 |            1506000.00 |
+| Support    |    755000.00 |             714000.00 |
+| IT         |   1328000.00 |            1266000.00 |
+| HR         |    607000.00 |             569000.00 |
+| Operations |    845000.00 |             801000.00 |
++------------+--------------+-----------------------+
+5 rows in set (0.00 sec)
+
+mysql>
